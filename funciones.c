@@ -1,6 +1,7 @@
 #include "funciones.h"
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 //VALIDACIONES
 
 int existeVehiculo(int id) {
