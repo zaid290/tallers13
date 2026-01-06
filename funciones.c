@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include "funciones.h"
@@ -479,4 +478,5 @@ void menu_principal() {
             default: printf("\nOpcion invalida.\n");
         }
     } while(opcion != 8);
+
 }
