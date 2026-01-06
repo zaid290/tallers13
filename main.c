@@ -1,11 +1,12 @@
 #include <stdio.h>
+#include <string.h>
 #include "funciones.h"
 
 int main() {
     int opcion;
 
     do {
-        printf("\n===== SGIC - CONCESIONARIA RUEDAS DE ORO =====\n");
+        printf("\n===== CONCESIONARIA RUEDAS DE ORO =====\n");
         printf("1. Registrar vehiculo\n");
         printf("2. Listar vehiculos disponibles\n");
         printf("3. Buscar vehiculo por preferencias\n");
@@ -35,3 +36,4 @@ int main() {
 //primero ctr + ñ
 //gcc main.c funciones.c -o inventario.exe
 //./inventario.exe
+
