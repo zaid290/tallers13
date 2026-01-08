@@ -24,7 +24,7 @@ int main() {
             case 4: registrarCliente(); break;
             case 5: listarClientes(); break;
             case 6: registrarVenta(); break;
-            case 0: printf("Saliendo del sistema...\n"); break;
+            case 0: printf("Saliendo del sistema\n"); break;
             default: printf("Opcion invalida.\n");
         }
 
@@ -36,4 +36,3 @@ int main() {
 //primero ctr + ñ
 //gcc main.c funciones.c -o inventario.exe
 //./inventario.exe
-
