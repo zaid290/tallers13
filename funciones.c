@@ -1,8 +1,9 @@
 #include "funciones.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
-/* ================= VALIDACIONES ================= */
+//VALIDACIONES
 
 int existeVehiculo(int id) {
     FILE *f = fopen("vehiculos.dat", "rb");
@@ -52,7 +53,7 @@ int vehiculoDisponible(int id) {
     return 0;
 }
 
-/* ================= VEHICULOS ================= */
+//VEHICULOS
 
 void registrarVehiculo() {
     FILE *f = fopen("vehiculos.dat", "ab");
@@ -72,10 +73,10 @@ void registrarVehiculo() {
         return;
     }
 
-    printf("Modelo del vehiculo: ");
+    printf("Nombre / Modelo: ");
     scanf("%s", v.nombre);
 
-    printf("Tipo de vehiculo: ");
+    printf("Tipo (camioneta, auto, etc): ");
     scanf("%s", v.tipo);
 
     printf("Marca: ");
@@ -87,7 +88,7 @@ void registrarVehiculo() {
     printf("Año del vehiculo: ");
     scanf("%d", &v.anio);
 
-    if (v.anio < 1950 || v.anio > 2026) {
+    if (v.anio < 1980 || v.anio > 2026) {
         printf("Año invalido.\n");
         fclose(f);
         return;
@@ -178,7 +179,7 @@ void buscarVehiculo() {
     fclose(f);
 }
 
-/* ================= CLIENTES ================= */
+//CLIENTES
 
 void registrarCliente() {
     FILE *f = fopen("clientes.dat", "ab");
@@ -242,7 +243,7 @@ void listarClientes() {
     fclose(f);
 }
 
-/* ================= VENTAS ================= */
+//VENTAS
 
 void registrarVenta() {
     FILE *fv = fopen("vehiculos.dat", "rb+");
