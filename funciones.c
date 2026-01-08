@@ -73,10 +73,10 @@ void registrarVehiculo() {
         return;
     }
 
-    printf("Nombre / Modelo: ");
+    printf("Modelo del vehiculo: ");
     scanf("%s", v.nombre);
 
-    printf("Tipo (camioneta, auto, etc): ");
+    printf("Tipo de vehiculo: ");
     scanf("%s", v.tipo);
 
     printf("Marca: ");
@@ -88,7 +88,7 @@ void registrarVehiculo() {
     printf("Año del vehiculo: ");
     scanf("%d", &v.anio);
 
-    if (v.anio < 1980 || v.anio > 2026) {
+    if (v.anio < 1950 || v.anio > 2026) {
         printf("Año invalido.\n");
         fclose(f);
         return;
@@ -297,3 +297,4 @@ void registrarVenta() {
 
     printf("Venta registrada exitosamente.\n");
 }
+
