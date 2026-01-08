@@ -85,11 +85,11 @@ void registrarVehiculo() {
     printf("Condicion (nuevo/usado): ");
     scanf("%s", v.condicion);
 
-    printf("Año del vehiculo: ");
+    printf("Anio del vehiculo: ");
     scanf("%d", &v.anio);
 
-    if (v.anio < 1950 || v.anio > 2026) {
-        printf("Año invalido.\n");
+    if (v.anio < 1980 || v.anio > 2026) {
+        printf("Anio invalido.\n");
         fclose(f);
         return;
     }
@@ -171,7 +171,7 @@ void buscarVehiculo() {
             strcmp(v.marca, marca) == 0 &&
             v.precio <= presupuesto) {
 
-            printf("ID:%d | %s | %s | %s | Año:%d | %s | $%.2f | %d km\n",
+            printf("ID:%d | %s | %s | %s | Anio:%d | %s | $%.2f | %d km\n",
                    v.id, v.nombre, v.tipo, v.marca,
                    v.anio, v.condicion, v.precio, v.kilometraje);
         }
@@ -297,4 +297,3 @@ void registrarVenta() {
 
     printf("Venta registrada exitosamente.\n");
 }
-
