@@ -1,7 +1,7 @@
 #include "funciones.h"
-#include <string.h>
-#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 //VALIDACIONES
 
 int existeVehiculo(int id) {
@@ -72,10 +72,15 @@ void registrarVehiculo() {
         return;
     }
 
-    printf("Tipo: ");
+    printf("Nombre / Modelo: ");
+    scanf("%s", v.nombre);
+
+    printf("Tipo (camioneta, auto, etc): ");
     scanf("%s", v.tipo);
+
     printf("Marca: ");
     scanf("%s", v.marca);
+
     printf("Condicion (nuevo/usado): ");
     scanf("%s", v.condicion);
 
@@ -88,7 +93,17 @@ void registrarVehiculo() {
         return;
     }
 
+    printf("Kilometraje: ");
+    scanf("%d", &v.kilometraje);
+
+    if (v.kilometraje < 0) {
+        printf("Kilometraje invalido.\n");
+        fclose(f);
+        return;
+    }
+
     v.disponible = 1;
+
     fwrite(&v, sizeof(Vehiculo), 1, f);
     fclose(f);
 
@@ -107,8 +122,9 @@ void listarVehiculos() {
     printf("\n--- VEHICULOS DISPONIBLES ---\n");
     while (fread(&v, sizeof(Vehiculo), 1, f)) {
         if (v.disponible == 1) {
-            printf("ID:%d | %s | %s | %s | $%.2f\n",
-                   v.id, v.tipo, v.marca, v.condicion, v.precio);
+            printf("ID:%d | %s | %s | %s | %s | $%.2f | %d km\n",
+                   v.id, v.nombre, v.tipo, v.marca,
+                   v.condicion, v.precio, v.kilometraje);
         }
     }
     fclose(f);
@@ -145,8 +161,9 @@ void buscarVehiculo() {
             strcmp(v.marca, marca) == 0 &&
             v.precio <= presupuesto) {
 
-            printf("ID:%d | %s | %s | %s | $%.2f\n",
-                   v.id, v.tipo, v.marca, v.condicion, v.precio);
+            printf("ID:%d | %s | %s | %s | %s | $%.2f | %d km\n",
+                   v.id, v.nombre, v.tipo, v.marca,
+                   v.condicion, v.precio, v.kilometraje);
         }
     }
     fclose(f);
@@ -208,7 +225,7 @@ void listarClientes() {
 
     printf("\n--- LISTA DE CLIENTES ---\n");
     while (fread(&c, sizeof(Cliente), 1, f)) {
-        printf("ID:%d | Nombre:%s | Edad:%d | Presupuesto:$%.2f\n",
+        printf("ID:%d | %s | Edad:%d | Presupuesto:$%.2f\n",
                c.id, c.nombre, c.edad, c.presupuesto);
     }
     fclose(f);
