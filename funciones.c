@@ -1,8 +1,8 @@
 #include "funciones.h"
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
-//VALIDACIONES
+
+/* ================= VALIDACIONES ================= */
 
 int existeVehiculo(int id) {
     FILE *f = fopen("vehiculos.dat", "rb");
@@ -52,7 +52,7 @@ int vehiculoDisponible(int id) {
     return 0;
 }
 
-//VEHICULOS
+/* ================= VEHICULOS ================= */
 
 void registrarVehiculo() {
     FILE *f = fopen("vehiculos.dat", "ab");
@@ -75,7 +75,7 @@ void registrarVehiculo() {
     printf("Modelo del vehiculo: ");
     scanf("%s", v.nombre);
 
-    printf("Tipo de vehiculo");
+    printf("Tipo de vehiculo: ");
     scanf("%s", v.tipo);
 
     printf("Marca: ");
@@ -83,6 +83,15 @@ void registrarVehiculo() {
 
     printf("Condicion (nuevo/usado): ");
     scanf("%s", v.condicion);
+
+    printf("Año del vehiculo: ");
+    scanf("%d", &v.anio);
+
+    if (v.anio < 1950 || v.anio > 2026) {
+        printf("Año invalido.\n");
+        fclose(f);
+        return;
+    }
 
     printf("Precio: ");
     scanf("%f", &v.precio);
@@ -122,9 +131,9 @@ void listarVehiculos() {
     printf("\n--- VEHICULOS DISPONIBLES ---\n");
     while (fread(&v, sizeof(Vehiculo), 1, f)) {
         if (v.disponible == 1) {
-            printf("ID:%d | %s | %s | %s | %s | $%.2f | %d km\n",
+            printf("ID:%d | %s | %s | %s | Año:%d | %s | $%.2f | %d km\n",
                    v.id, v.nombre, v.tipo, v.marca,
-                   v.condicion, v.precio, v.kilometraje);
+                   v.anio, v.condicion, v.precio, v.kilometraje);
         }
     }
     fclose(f);
@@ -161,15 +170,15 @@ void buscarVehiculo() {
             strcmp(v.marca, marca) == 0 &&
             v.precio <= presupuesto) {
 
-            printf("ID:%d | %s | %s | %s | %s | $%.2f | %d km\n",
+            printf("ID:%d | %s | %s | %s | Año:%d | %s | $%.2f | %d km\n",
                    v.id, v.nombre, v.tipo, v.marca,
-                   v.condicion, v.precio, v.kilometraje);
+                   v.anio, v.condicion, v.precio, v.kilometraje);
         }
     }
     fclose(f);
 }
 
-//CLIENTES
+/* ================= CLIENTES ================= */
 
 void registrarCliente() {
     FILE *f = fopen("clientes.dat", "ab");
@@ -194,6 +203,7 @@ void registrarCliente() {
 
     printf("Edad: ");
     scanf("%d", &c.edad);
+
     if (c.edad <= 0) {
         printf("Edad invalida.\n");
         fclose(f);
@@ -202,6 +212,7 @@ void registrarCliente() {
 
     printf("Presupuesto: ");
     scanf("%f", &c.presupuesto);
+
     if (c.presupuesto <= 0) {
         printf("Presupuesto invalido.\n");
         fclose(f);
@@ -231,7 +242,7 @@ void listarClientes() {
     fclose(f);
 }
 
-//VENTAS
+/* ================= VENTAS ================= */
 
 void registrarVenta() {
     FILE *fv = fopen("vehiculos.dat", "rb+");
@@ -285,5 +296,3 @@ void registrarVenta() {
 
     printf("Venta registrada exitosamente.\n");
 }
-
-
