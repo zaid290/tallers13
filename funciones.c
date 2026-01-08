@@ -1,7 +1,7 @@
 #include "funciones.h"
 #include <stdlib.h>
 #include <string.h>
-
+#include <stdio.h>
 //VALIDACIONES
 
 int existeVehiculo(int id) {
@@ -285,4 +285,5 @@ void registrarVenta() {
 
     printf("Venta registrada exitosamente.\n");
 }
+
 
