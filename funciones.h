@@ -4,11 +4,13 @@
 
 typedef struct {
     int id;
-    char tipo[20];
+    char nombre[50];      
+    char tipo[20];        
     char marca[20];
-    char condicion[10];
+    char condicion[10];   
     float precio;
-    int disponible;
+    int kilometraje;      
+    int disponible;       
 } Vehiculo;
 
 typedef struct {
@@ -24,18 +26,19 @@ typedef struct {
     int idCliente;
 } Venta;
 
-
+//PROTOTIPO
 
 void registrarVehiculo();
 void listarVehiculos();
 void buscarVehiculo();
+
 void registrarCliente();
-void listarClientes();     
+void listarClientes();
+
 void registrarVenta();
 
-
+//VALIDACIONES
 
 int existeVehiculo(int id);
 int existeCliente(int id);
 int vehiculoDisponible(int id);
-
