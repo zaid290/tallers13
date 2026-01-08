@@ -286,10 +286,6 @@ void registrarVenta() {
         }
     }
 
-    venta.idVenta = rand() % 10000;
-    venta.idVehiculo = idVehiculo;
-    venta.idCliente = idCliente;
-
     fwrite(&venta, sizeof(Venta), 1, fventas);
 
     fclose(fv);
@@ -297,3 +293,4 @@ void registrarVenta() {
 
     printf("Venta registrada exitosamente.\n");
 }
+
